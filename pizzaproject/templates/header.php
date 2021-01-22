@@ -15,7 +15,6 @@
     		padding: 20px;
     	}
     </style>
-
 </head>
 	<body class="grey lighten-4">
 		<nav class="white z-depth-0">

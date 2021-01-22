@@ -1,5 +1,8 @@
 <?php
 	
+	// database connection
+	include('config/db_connect.php');
+
 	$email = $title = $ingredients = '';
 	$errors = array('email'=>'', 'title'=>'', 'ingredients'=>''); //array for logging errors
 
@@ -34,12 +37,25 @@
 			}
 		}
 
-		//Check for errors --> true(errors) and false(no errors) --> redirect index.php!!
+		//Check for errors --> true(errors) and false(no errors) --> save the database
 		if (array_filter($errors)) {
 			//echo 'Form contains error(s)';
 		} else {
-			//echo 'Form is valid';
-			header('Location: index.php');
+			$email = mysqli_real_escape_string($conn, $_POST['email']);
+			$title = mysqli_real_escape_string($conn, $_POST['title']);
+			$ingredients = mysqli_real_escape_string($conn,  $_POST['ingredients']);
+
+			// create sql insert into pizzas table values title, email, ingredients
+			$sql = "INSERT INTO pizzas(title, email, ingredients) VALUES('$title', '$email', '$ingredients')";
+
+			// save to db and check
+			if (mysqli_query($conn, $sql)) {
+				// success
+				header('Location: index.php');
+			} else {
+				// error
+				echo 'Query error ' . mysqli_error($conn);
+			}
 		}
 	}
 

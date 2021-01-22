@@ -18,7 +18,6 @@
 	// check GET request id param
 	if (isset($_GET['id'])) {
 		$id = mysqli_real_escape_string($conn, $_GET['id']);
-
 		$sql = "SELECT * FROM pizzas WHERE id = $id"; // make sql
 		$result = mysqli_query($conn, $sql);		  // get the query result
 		$pizza = mysqli_fetch_assoc($result); 		  // fetch result in array fromat
@@ -34,7 +33,7 @@
 
   <?php include('templates/header.php') ?>
 
-  <div class="container center">
+  <div class="container center grey-text">
   	<?php if($pizza): ?>
 
   		<h4><?php echo htmlspecialchars($pizza['title']); ?></h4>
@@ -52,6 +51,7 @@
   	<?php else: ?>
   		<h5>Pizza with this id doesn't exists!!</h5>
   	<?php endif; ?>
+
   </div>
 
   <?php include('templates/footer.php'); ?>

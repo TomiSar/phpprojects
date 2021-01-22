@@ -1,0 +1,18 @@
+phpMyAdmin server 127.0.0.1
+Databases --> Create database  Database name: ninja_pizzas Create
+Table     --> Create table	   Table: pizzas Go
+
+#	Name		Type			Collation			Null	Default				Extra			Action
+1	id Primary	int(11)								No		None				AUTO_INCREMENT	Change	
+2	title		varchar(255)	latin1_swedish_ci	No		None								Change
+3	ingredients	varchar(255)	latin1_swedish_ci	No		None								Change
+4	email		varchar(255)	latin1_swedish_ci	No		None								Change
+5	created_at	timestamp							No		current_timestamp()					Change
+
+http://localhost/phpmyadmin/index.php
+User accounts --> Add user account
+user: 		tomis
+host name:  localhost
+passwd:		Sensei0455!
+
+Global priviledges Check all, Press Go
